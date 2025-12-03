@@ -1,0 +1,16 @@
+# Elastic Kubernetes Service (EKS)
+This README was auto-generated on 2025-12-03 to capture the layout of `Elastic Kubernetes Service (EKS)`. Update it with a richer description of this directory's purpose as you continue working here.
+## Directory Snapshot
+- Path: `Elastic Kubernetes Service (EKS)`
+- Subdirectories: 2
+- Files: 1
+
+## Subdirectories
+- `How To's/` - TODO: add details
+- `Manifests/` - TODO: add details
+
+## Files
+- `readme.md` - TODO: add details
+
+---
+_Feel free to replace this template once you document this directory in more detail._
