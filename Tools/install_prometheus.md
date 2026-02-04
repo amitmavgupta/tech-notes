@@ -9,7 +9,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 - Upgrade the cluster
 
 ```
-helm upgrade --install -n monitoring prometheus prometheus-community/kube-prometheus-stack -f prometheus-values.yaml
+helm upgrade --install -n monitoring prometheus prometheus-community/kube-prometheus-stack
 Release "prometheus" has been upgraded. Happy Helming!
 NAME: prometheus
 LAST DEPLOYED: Wed Jun  5 20:32:47 2024
