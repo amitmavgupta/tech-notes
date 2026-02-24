@@ -31,12 +31,6 @@ A living notebook of cloud, Kubernetes, networking, and performance references c
 - Many folders contain PNG/PDF diagrams—open them side-by-side with the markdown instructions for context.
 - Several guides reference public blog posts; check `Blog-Manifests/` for the YAML or Dockerfile that matches the article slug.
 
-## Keeping things fresh
-
-1. Capture new learnings in the closest-matching folder, or create a short subfolder when a topic grows beyond a single file.
-2. Prefer descriptive filenames (`eks-arm64-cluster.md` vs. `notes.md`).
-3. Cross-link related notes (e.g., mention relevant cheat sheets or manifests) so future-you lands on the right artifact quickly.
-
 ## Contributing or adapting
 
 - This repo is primarily a personal knowledge base, but feel free to fork it, trim what you need, and layer in your playbooks.
