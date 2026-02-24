@@ -1,6 +1,6 @@
 # AWS
 
-Runbooks, references, and manifests for AWS networking, compute, & container workloads.
+Runbooks, references, and manifests for AWS networking, compute & container workloads.
 
 ## Contents
 - `How To's/`: CLI-driven walkthroughs for IAM, EC2, ECR, and VPC tasks such as `detach_iam_policies_role.md`, `ec2-instance-arm-based.md`, and `list-secondary-ips.md`.
