@@ -5,7 +5,7 @@
 ```
 apt  install golang-go -y
 
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
 
 chmod +x ./kind
 
@@ -15,7 +15,7 @@ mv ./kind /usr/local/bin
 - Validate Kind version
 ```
 kind version
-kind v0.27.0 go1.20.4 linux/amd64
+kind v0.31.0 go1.25.5 linux/amd64
 ```
 
 - Create a sample kind-config.yaml
