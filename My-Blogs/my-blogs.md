@@ -9,6 +9,32 @@
 * https://www.youtube.com/watch?v=sY1jSrbbjTA&list=PLNN9TCnjABcb_o82VmAMRnj4etWnHzUiZ&index=10 (eBPF Day India-2)
 * https://www.youtube.com/watch?v=xWyCxWEkd40 (OpenStack Summit Berlin)
 
+## Nutanix
+* https://www.nutanix.com/tech-center/blog/how-nutanix-ahv-uses-ebpf-for-vnic-ip-mapping
+* https://www.nutanix.com/tech-center/blog/nutanix-flow-smarter-l4-load-balancing
+
+## Medium.com (Personal-Blogs)
+* https://medium.com/@amitmavgupta/flow-cni-in-a-federated-environment-bridging-vms-and-kubernetes-with-nutanix-flow-227f2b25f2ec
+* https://medium.com/@amitmavgupta/clusterapi-provider-for-aws-and-cilium-e73dcdf44459
+* https://medium.com/@amitmavgupta/cilium-enhanced-networking-with-intel-82599-vi-bf7688b9615e
+* https://medium.com/@amitmavgupta/cilium-support-for-efa-drivers-in-eks-249987d043eb
+* https://medium.com/@amitmavgupta/cilium-ipv6-in-eks-e1fe7735feff
+* https://medium.com/@amitmavgupta/cilium-installing-cilium-in-gke-with-no-kube-proxy-826e84f971b4
+* https://medium.com/@amitmavgupta/extending-a-service-using-private-link-from-azure-and-securing-it-with-ciliums-network-policy-ae3248281bbd
+* https://medium.com/@amitmavgupta/security-groups-for-pods-in-eks-cilium-and-networking-f809cf72fc31
+* https://medium.com/@amitmavgupta/cilium-support-for-eni-prefix-delegation-in-an-eks-cluster-feddf894160b
+* https://medium.com/@amitmavgupta/cilium-evaluating-workload-identities-on-an-aks-cluster-running-azure-cni-powered-by-cilium-14b0d3ab65a1
+* https://medium.com/@amitmavgupta/cilium-pod-sandboxing-in-aks-and-azure-cni-powered-by-cilium-b6586e831c64
+* https://medium.com/@amitmavgupta/cilium-fixed-ip-allocation-vs-prefix-delegation-in-aks-873a6700a4ba
+* https://medium.com/@amitmavgupta/cilium-where-are-my-ip-addresses-in-aks-on-azpc-b8f567a2ce68
+* https://medium.com/@amitmavgupta/cilium-azure-rke2-terraform-lets-call-it-cart-f4c0b8dadf4e
+* https://medium.com/@amitmavgupta/cilium-installing-cilium-in-eks-with-no-kube-proxy-86f54a56c360
+* https://medium.com/@amitmavgupta/installing-cilium-in-azure-kubernetes-service-byocni-with-no-kube-proxy-825b9007b24b
+* https://medium.com/@amitmavgupta/cilium-installing-cilium-on-aks-mariner-in-byocni-mode-f94cc1dcd94f
+* https://medium.com/@amitmavgupta/cilium-installing-azure-cni-powered-by-cilium-using-terraform-part-1-eed719c884a4
+* https://medium.com/@amitmavgupta/cilium-installing-azure-cni-powered-by-cilium-using-terraform-part-2-6f20f70fd394
+* https://medium.com/@amitmavgupta/aws-accessing-an-ec2-instance-in-a-private-subnet-using-endpoints-787891e6e788
+
 ## Isovalent
 * https://isovalent.com/blog/post/cilium-and-azure-arc/#h-deploy-configurations-using-gitops (GitOps, Flex in Azure Arc)
 * https://isovalent.com/blog/post/cilium-egress-gateway-eks/#h-how-can-you-scale-the-egress-gateway-solution (AWS Route Server and Egress GW)
@@ -38,27 +64,6 @@
 * https://isovalent.com/blog/post/cilium-aks/
 * https://www.youtube.com/watch?v=TrKn0dQTOrw
 * https://www.youtube.com/watch?v=A91iQS0F9Ug
-
-## Medium.com (Personal-Blogs)
-* https://medium.com/@amitmavgupta/clusterapi-provider-for-aws-and-cilium-e73dcdf44459
-* https://medium.com/@amitmavgupta/cilium-enhanced-networking-with-intel-82599-vi-bf7688b9615e
-* https://medium.com/@amitmavgupta/cilium-support-for-efa-drivers-in-eks-249987d043eb
-* https://medium.com/@amitmavgupta/cilium-ipv6-in-eks-e1fe7735feff
-* https://medium.com/@amitmavgupta/cilium-installing-cilium-in-gke-with-no-kube-proxy-826e84f971b4
-* https://medium.com/@amitmavgupta/extending-a-service-using-private-link-from-azure-and-securing-it-with-ciliums-network-policy-ae3248281bbd
-* https://medium.com/@amitmavgupta/security-groups-for-pods-in-eks-cilium-and-networking-f809cf72fc31
-* https://medium.com/@amitmavgupta/cilium-support-for-eni-prefix-delegation-in-an-eks-cluster-feddf894160b
-* https://medium.com/@amitmavgupta/cilium-evaluating-workload-identities-on-an-aks-cluster-running-azure-cni-powered-by-cilium-14b0d3ab65a1
-* https://medium.com/@amitmavgupta/cilium-pod-sandboxing-in-aks-and-azure-cni-powered-by-cilium-b6586e831c64
-* https://medium.com/@amitmavgupta/cilium-fixed-ip-allocation-vs-prefix-delegation-in-aks-873a6700a4ba
-* https://medium.com/@amitmavgupta/cilium-where-are-my-ip-addresses-in-aks-on-azpc-b8f567a2ce68
-* https://medium.com/@amitmavgupta/cilium-azure-rke2-terraform-lets-call-it-cart-f4c0b8dadf4e
-* https://medium.com/@amitmavgupta/cilium-installing-cilium-in-eks-with-no-kube-proxy-86f54a56c360
-* https://medium.com/@amitmavgupta/installing-cilium-in-azure-kubernetes-service-byocni-with-no-kube-proxy-825b9007b24b
-* https://medium.com/@amitmavgupta/cilium-installing-cilium-on-aks-mariner-in-byocni-mode-f94cc1dcd94f
-* https://medium.com/@amitmavgupta/cilium-installing-azure-cni-powered-by-cilium-using-terraform-part-1-eed719c884a4
-* https://medium.com/@amitmavgupta/cilium-installing-azure-cni-powered-by-cilium-using-terraform-part-2-6f20f70fd394
-* https://medium.com/@amitmavgupta/aws-accessing-an-ec2-instance-in-a-private-subnet-using-endpoints-787891e6e788
 
 ## Avi Networks
 * https://avinetworks.com/docs/22.1/cloud-gcp/
