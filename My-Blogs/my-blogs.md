@@ -10,6 +10,7 @@
 * https://www.youtube.com/watch?v=xWyCxWEkd40 (OpenStack Summit Berlin)
 
 ## Nutanix
+* https://www.nutanix.dev/2026/04/20/mastering-egress-traffic-in-flow-cni-a-guide-to-egress-ip/
 * https://www.nutanix.com/tech-center/blog/how-nutanix-ahv-uses-ebpf-for-vnic-ip-mapping
 * https://www.nutanix.com/tech-center/blog/nutanix-flow-smarter-l4-load-balancing
 
