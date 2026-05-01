@@ -110,7 +110,7 @@ metadata:
   name: eks-connector-console-dashboard-full-access-clusterrole-binding
 subjects:
 - kind: User
-  name: "arn:aws:iam::679388779924:user/amit.gupta@isovalent.com"
+  name: "arn:aws:iam::#################:user/x@y.com"
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
