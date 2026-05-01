@@ -24,4 +24,4 @@ rules:
       - impersonate
     resourceNames:
       # TODO: 1. ADD your IAM identity arn here
-      - "arn:aws:iam::#################:user/amit.gupta@isovalent.com"
+      - "arn:aws:iam::#################:user/x@y.com"
