@@ -15,7 +15,6 @@
 * https://www.nutanix.com/tech-center/blog/nutanix-flow-smarter-l4-load-balancing
 
 ## Medium.com (Personal-Blogs)
-* https://medium.com/@amitmavgupta/flow-cni-in-a-federated-environment-bridging-vms-and-kubernetes-with-nutanix-flow-227f2b25f2ec
 * https://medium.com/@amitmavgupta/clusterapi-provider-for-aws-and-cilium-e73dcdf44459
 * https://medium.com/@amitmavgupta/cilium-enhanced-networking-with-intel-82599-vi-bf7688b9615e
 * https://medium.com/@amitmavgupta/cilium-support-for-efa-drivers-in-eks-249987d043eb
