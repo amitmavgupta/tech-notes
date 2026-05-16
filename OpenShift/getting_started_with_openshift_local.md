@@ -1,6 +1,6 @@
-# OpenShift Local and Zitadel Identity Management Setup
+# OpenShift Local Setup
 
-This guide covers installing OpenShift Local (formerly CodeReady Containers) and configuring Zitadel as an identity management system.
+This guide covers installing OpenShift Local (formerly CodeReady Containers).
 
 ---
 
