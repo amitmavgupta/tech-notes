@@ -5,16 +5,16 @@
 **From**
 
 ```
-#sysctl fs.inotify.max_user_watches
-#fs.inotify.max_user_watches = 148727
+sysctl fs.inotify.max_user_watches
+fs.inotify.max_user_watches = 148727
 
-#sysctl fs.inotify.max_user_instances
-#fs.inotify.max_user_instances = 128
+sysctl fs.inotify.max_user_instances
+fs.inotify.max_user_instances = 128
 ```
 **To**
 ```
-#sudo sysctl fs.inotify.max_user_instances=512
-#sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl fs.inotify.max_user_instances=512
+sudo sysctl fs.inotify.max_user_watches=524288
 ```
 - To make the changes persistent, edit the file /etc/sysctl.conf and add these lines:
 ```
