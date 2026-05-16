@@ -28,7 +28,7 @@ az account set --subscription <subscription-id>
 
 Example:
 ```bash
-az account set --subscription 8dbd2563-77eb-41a1-917b-5a1344da9767
+az account set --subscription XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ### List Available Locations
