@@ -126,3 +126,6 @@
 
 ## Kubelogin
 [Kubernetes OIDC authentication](https://github.com/int128/kubelogin)
+
+## Security and Observability with Cilium on 5G
+[Security and observability with Cilium](https://luislogs.com/posts/security-and-observability-with-cilium-on-my-5g-network/)
