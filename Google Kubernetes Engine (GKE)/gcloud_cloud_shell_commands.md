@@ -22,7 +22,7 @@ Output:
 ```
 Automatic authentication with GCP CLI tools in Cloud Shell is disabled. To enable, please rerun command with `--authorize-session` flag.
 Welcome to Cloud Shell! Type "help" to get started.
-Your Cloud Platform project in this session is set to cilium-dev.
+Your Cloud Platform project in this session is set to test.
 Use "gcloud config set project [PROJECT_ID]" to change to a different project.
 ```
 
@@ -35,7 +35,7 @@ exit
 ## Set GCP Project
 
 ```bash
-gcloud config set project cilium-demo
+gcloud config set project test
 ```
 
 Output:
@@ -46,7 +46,7 @@ Updated property [core/project].
 ## Copy Files from Compute Instance
 
 ```bash
-gcloud compute scp amit-iso-ent://home/amit/export.log /Users/amit/Downloads/
+gcloud compute scp test://home/amit/export.log /Users/test/Downloads/
 ```
 
 ## List Compute Instances
