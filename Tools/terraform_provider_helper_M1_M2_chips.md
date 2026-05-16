@@ -17,11 +17,11 @@ Error: Incompatible provider version
 - `m1-terraform-provider-helper` is A CLI tool to manage the installation of terraform providers for the Mac M1 chip
 
 ```
-#brew install kreuzwerker/taps/m1-terraform-provider-helper
+brew install kreuzwerker/taps/m1-terraform-provider-helper
 
-#m1-terraform-provider-helper activate # (In case you have not activated the helper)
+m1-terraform-provider-helper activate # (In case you have not activated the helper)
 
-#m1-terraform-provider-helper install hashicorp/template -v 2.10.0 # Install and compile
+m1-terraform-provider-helper install hashicorp/template -v 2.10.0 # Install and compile
 ```
 
 - Once installed run `terraform int` again
