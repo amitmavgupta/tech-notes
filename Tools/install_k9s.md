@@ -9,6 +9,6 @@ sudo apt install ./k9s_linux_amd64.deb
 ```
 - k9s on Fedora (dnf)
 ```
-#sudo dnf copr enable luminoso/k9s
-#sudo dnf install k9s
+sudo dnf copr enable luminoso/k9s
+sudo dnf install k9s
 ```
