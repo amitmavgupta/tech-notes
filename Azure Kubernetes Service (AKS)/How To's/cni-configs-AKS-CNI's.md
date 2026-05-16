@@ -285,6 +285,4 @@ This is Cilium running as a delegated plugin with Azure IPAM integration.
 ## Notes
 
 - When upgrading from traditional Azure CNI to Cilium, the configuration file is replaced entirely.
-- CEE (Cilium Enterprise Edition) provides additional features like advanced security policies and eBPF-based observability.
-- Always test CNI configuration changes in a non-production environment first.
 - The DNS IP (`169.254.20.10`) is a link-local address reserved for NodeLocal DNSCache communication.
