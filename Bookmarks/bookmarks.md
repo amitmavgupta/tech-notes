@@ -7,6 +7,9 @@
 ## EKS-Anywhere Curated Packages Installation
 [EKS-A Curated Packages](https://anywhere.eks.amazonaws.com/docs/packages/prereq/)
 
+## EKS-Anywhere Cluster Troubleshooting
+[EKS-A Cluster Troubleshooting](https://anywhere.eks.amazonaws.com/docs/troubleshooting/troubleshooting/)
+
 ## Registering non-EKS clusters using eksctl
 [EKS-Connector](https://eksctl.io/usage/eks-connector/)
 
