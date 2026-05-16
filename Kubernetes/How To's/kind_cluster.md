@@ -1,4 +1,4 @@
-# Creating a Kind cluster
+# Creating a Kind cluster with Cilium as the CNI
 
 - Install golang-go
 
