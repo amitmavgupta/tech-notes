@@ -144,134 +144,6 @@ Get cluster nodes:
 oc get nodes -o wide
 ```
 
----
-
-## Part 2: Install Zitadel as Identity Management
-
-### Prerequisites
-
-- OpenShift Local running (from Part 1)
-- Helm package manager installed
-- `kubectl` CLI access configured
-
-### Step 1: Create Certificates for Zitadel
-
-Apply the certificate creation job:
-
-```bash
-kubectl apply -f https://raw.githubusercontent.com/zitadel/zitadel-charts/main/examples/2-postgres-secure/certs-job.yaml
-```
-
-**Expected Output:**
-```
-serviceaccount/certs-creator created
-role.rbac.authorization.k8s.io/secret-creator created
-rolebinding.rbac.authorization.k8s.io/certs-creator created
-job.batch/create-certs created
-```
-
-### Step 2: Add Helm Repositories
-
-Add the Bitnami Helm repository for PostgreSQL:
-
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-```
-
-Add the Zitadel Helm repository:
-
-```bash
-helm repo add zitadel https://charts.zitadel.com
-```
-
-### Step 3: Switch to Default Project
-
-```bash
-oc project default
-```
-
-### Step 4: Install PostgreSQL
-
-Install PostgreSQL using the Bitnami Helm chart with Zitadel-compatible values:
-
-```bash
-helm install --wait db bitnami/postgresql \
-  --version 12.10.0 \
-  --values https://raw.githubusercontent.com/zitadel/zitadel-charts/main/examples/1-postgres-insecure/postgres-values.yaml
-```
-
-**Expected Output:**
-```
-NAME: db
-LAST DEPLOYED: [timestamp]
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-
-PostgreSQL can be accessed via port 5432 on the following DNS names from within your cluster:
-    db-postgresql.default.svc.cluster.local - Read/Write connection
-```
-
-### Step 5: Retrieve PostgreSQL Password
-
-```bash
-export POSTGRES_PASSWORD=$(kubectl get secret --namespace default db-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)
-```
-
-### Step 6: Install Zitadel
-
-Install Zitadel using the Helm chart with example values:
-
-```bash
-helm install my-zitadel zitadel/zitadel \
-  --values https://raw.githubusercontent.com/zitadel/zitadel-charts/main/examples/1-postgres-insecure/zitadel-values.yaml
-```
-
-**Expected Output:**
-```
-NAME: my-zitadel
-LAST DEPLOYED: [timestamp]
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-
-Thank you for installing zitadel.
-```
-
-### Step 7: Access Zitadel
-
-Once installed, Zitadel should be accessible via its configured ingress route. Check the Zitadel pod status:
-
-```bash
-kubectl get pods | grep zitadel
-```
-
-### Step 8: Verify Installation
-
-Check all Zitadel and PostgreSQL resources:
-
-```bash
-kubectl get all | grep -E "zitadel|postgresql|db"
-```
-
----
-
-## Post-Installation: Using k9s for Cluster Monitoring
-
-You can use k9s, a terminal UI for Kubernetes, to monitor your cluster:
-
-```bash
-k9s
-```
-
-This provides an interactive dashboard showing:
-- Pods across all namespaces
-- Node status and resources
-- Logs and shell access to pods
-- Resource utilization
-
----
-
 ## Stopping the OpenShift Local Instance
 
 When you're done working with your local OpenShift cluster:
@@ -315,24 +187,7 @@ Stopped the instance
 - This is common in isolated environments without internet access to registries
 - The core functionality still works despite marketplace operator failures
 
-### PostgreSQL Connection Issues
-
-Verify PostgreSQL is running and accessible:
-
-```bash
-kubectl get svc db-postgresql
-kubectl logs -l app.kubernetes.io/name=postgresql
-```
-
-### Zitadel Not Accessible
-
-Check Zitadel pod logs:
-
-```bash
-kubectl logs -l app.kubernetes.io/name=zitadel
-```
-
-Check if the ingress route is configured:
+### Check if the ingress route is configured:
 
 ```bash
 kubectl get ingress
@@ -344,11 +199,8 @@ kubectl get routes
 ## Security Considerations
 
 - **Development Only**: This setup is for development and testing purposes
-- **Insecure Example**: The examples use insecure PostgreSQL configurations for simplicity
-- **Credentials**: Always use secure credentials in production environments
 - **Pull Secrets**: The pull secret is required for accessing Red Hat container registries
 - **Network Access**: By default, CRC is accessible only from the local machine
 
 For production deployments, refer to:
 - [Red Hat OpenShift Documentation](https://docs.openshift.com/)
-- [Zitadel Production Deployment Guide](https://zitadel.com/docs)
