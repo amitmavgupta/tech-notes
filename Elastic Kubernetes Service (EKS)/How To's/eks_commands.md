@@ -15,7 +15,7 @@ cluster1	ng-1		ACTIVE	2024-03-10T16:13:06Z	2		2		2			m5.large	AL2_x86_64	eks-ng-
 ## Upgrade EKS Cluster
 
 ```bash
-eksctl upgrade cluster --name cluster1 --region ap-southeast-2 --version 1.29 --approve
+eksctl upgrade cluster --name cluster1 --region ap-southeast-2 --version 1.35 --approve
 ```
 
 ## Upgrade EKS Node Group
@@ -25,7 +25,7 @@ eksctl upgrade nodegroup \
   --name=ng-1 \
   --cluster=cluster1 \
   --region=ap-southeast-2 \
-  --kubernetes-version=1.29
+  --kubernetes-version=1.35
 ```
 
 ## Add a Node to a Node Group
@@ -51,13 +51,13 @@ aws eks update-kubeconfig --region ap-southeast-2 --name cluster1
 ## Debug a Node
 
 ```bash
-kubectl debug node/ip-192-168-108-222.ap-southeast-2.compute.internal -it --image=ubuntu
+kubectl debug node/ip-X-X-X-X.ap-southeast-2.compute.internal -it --image=ubuntu
 ```
 
 ## Delete Debug Pod
 
 ```bash
-kubectl delete pod node-debugger-ip-192-168-108-222.ap-southeast-2.compute.internal-n6jjq --now
+kubectl delete pod node-debugger-ip-X-X-X-X.ap-southeast-2.compute.internal-n6jjq --now
 ```
 
 ## Check AWS VPC CNI Version
