@@ -1,6 +1,0 @@
-# How to check CPU's on a Mac via CLI?
-
-```
-#sysctl -n hw.ncpu
-10
-```
