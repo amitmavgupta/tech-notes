@@ -4,49 +4,6 @@ Advanced networking configuration for AKS including Cilium integration, load bal
 
 ---
 
-## Azure CNI with Cilium Integration
-
-### Cilium Ingress Controller Setup
-
-Deploy Cilium as the ingress controller for advanced traffic management:
-
-```bash
-# Create cluster with Cilium
-az group create --name cilium-ingress-rg --location eastus
-
-az network vnet create \
-  -g cilium-ingress-rg \
-  -n cilium-vnet \
-  --address-prefixes 10.0.0.0/8
-
-az network vnet subnet create \
-  -g cilium-ingress-rg \
-  --vnet-name cilium-vnet \
-  -n cilium-subnet \
-  --address-prefixes 10.240.0.0/16
-
-az aks create \
-  -n cilium-cluster \
-  -g cilium-ingress-rg \
-  -l eastus \
-  --network-plugin azure \
-  --network-dataplane cilium
-```
-
-### Install Cilium Ingress
-
-Deploy Cilium ingress configuration:
-
-```bash
-helm repo add cilium https://helm.cilium.io
-helm install cilium cilium/cilium \
-  --namespace cilium \
-  --create-namespace \
-  --values cilium-values.yaml
-```
-
----
-
 ## Azure Load Balancer Configuration
 
 ### Internal Load Balancer Annotation

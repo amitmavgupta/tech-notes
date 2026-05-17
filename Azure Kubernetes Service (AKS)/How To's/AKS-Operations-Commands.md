@@ -289,6 +289,193 @@ konnectivity-agent-54c85967cb-7tbxr       1/1     Running   0          8d
 konnectivity-agent-54c85967cb-mgfdg       1/1     Running   0          8d
 ```
 
+### Troubleshooting Konnectivity Agent Issues
+
+If Konnectivity agent pods are not running or showing error status:
+
+```bash
+kubectl get pods -n kube-system | grep konnectivity
+```
+
+**Problem symptoms:**
+```
+kube-system   konnectivity-agent-599f585959-cffbs   0/1     Running   0             23m
+kube-system   konnectivity-agent-599f585959-dk8rk   0/1     Running   0             23m
+```
+
+**Resolution steps:**
+- Check pod events: `kubectl describe pod <konnectivity-pod> -n kube-system`
+- Review logs: `kubectl logs <konnectivity-pod> -n kube-system`
+- Verify network connectivity and firewall rules
+- Reference: [Konnectivity connectivity issues](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/connectivity/error-from-server-error-dialing-backend-dial-tcp)
+
+---
+
+## Add-ons and Extensions
+
+### Add-ons vs Extensions
+
+**Add-ons:**
+- Fully managed by AKS resource provider
+- Patch versions upgraded within Kubernetes minor version
+- Major/minor versions upgrade with Kubernetes minor version upgrades
+- Patched weekly with AKS releases
+- Controlled via maintenance windows and release tracker
+
+**Extensions:**
+- Built on Helm charts with Azure Resource Manager-driven experience
+- Managed by separate resource provider
+- More flexible lifecycle management
+- Enable advanced Azure capabilities on your cluster
+
+**Key Difference:**
+Add-ons are part of the AKS resource provider API, while extensions are managed through a separate resource provider.
+
+### Enable Add-ons
+
+Enable built-in cluster add-ons:
+
+```bash
+az aks enable-addons --resource-group myRG --name myCluster --addons <addon-name>
+```
+
+### Manage Extensions
+
+List all cluster extensions:
+
+```bash
+az k8s-extension list \
+  --cluster-name <cluster-name> \
+  --resource-group <resource-group> \
+  --cluster-type managedClusters
+```
+
+Show specific extension details:
+
+```bash
+az k8s-extension show \
+  --cluster-name <cluster-name> \
+  --resource-group <resource-group> \
+  --cluster-type managedClusters \
+  -n <extension-name>
+```
+
+Delete extension:
+
+```bash
+az k8s-extension delete \
+  --cluster-name <cluster-name> \
+  --resource-group <resource-group> \
+  --cluster-type managedClusters \
+  -n <extension-name>
+```
+
+### Register for Preview Features
+
+Register required resource providers for preview features:
+
+```bash
+az provider register --namespace Microsoft.ContainerService --wait
+az provider register --namespace Microsoft.KubernetesConfiguration --wait
+```
+
+### Register Specific Preview Features
+
+Enable specific preview features:
+
+```bash
+# Example: Register KataVM Isolation Preview
+az feature register \
+  --namespace "Microsoft.ContainerService" \
+  --name "KataVMIsolationPreview"
+
+# Check registration status
+az feature show \
+  --namespace "Microsoft.ContainerService" \
+  --name "KataVMIsolationPreview" -o table
+
+# Propagate the change
+az provider register -n Microsoft.ContainerService
+```
+
+**Output:**
+```
+Name                                               RegistrationState
+-------------------------------------------------  -------------------
+Microsoft.ContainerService/KataVMIsolationPreview  Registered
+```
+
+### Verify Isovalent Enterprise Cilium Extension
+
+Verify if Isovalent Enterprise Cilium is installed via Azure Marketplace:
+
+```bash
+az k8s-extension show \
+  --cluster-name <clusterName> \
+  --resource-group <resourceGroupName> \
+  --cluster-type managedClusters \
+  -n cilium
+```
+
+### Accept Azure Marketplace Terms
+
+Accept terms and agreements for marketplace Kubernetes applications:
+
+```bash
+az vm image terms accept \
+  --offer <Product-ID> \
+  --plan <Plan-ID> \
+  --publisher <Publisher-ID>
+```
+
+### Enable Azure Arc Integration
+
+Enable connectedk8s extension for Azure Arc:
+
+```bash
+az extension add --name connectedk8s
+az provider register --namespace Microsoft.Kubernetes
+az provider register --namespace Microsoft.KubernetesConfiguration
+az provider register --namespace Microsoft.ExtendedLocation
+```
+
+---
+
+## Kube-proxy Configuration for BYO CNI
+
+### Disable Kube-proxy in BYO CNI Clusters
+
+For BYO CNI deployments, you may want to disable the default kube-proxy and use an alternative load balancer.
+
+**Configuration to disable kube-proxy:**
+
+```json
+{
+    "enabled": false,
+    "mode": "IPVS",
+    "ipvsConfig": {
+      "scheduler": "LeastConnection",
+      "TCPTimeoutSeconds": 900,
+      "TCPFINTimeoutSeconds": 120,
+      "UDPTimeoutSeconds": 300
+    }
+}
+```
+
+**Apply this configuration during cluster creation:**
+
+```bash
+az aks create \
+  --resource-group myRG \
+  --name myCluster \
+  --network-plugin none \
+  --kube-proxy-config kube-proxy-config.json
+```
+
+**Use case:**
+- When using Cilium or other CNI plugins that handle load balancing
+- For advanced networking scenarios requiring custom traffic management
+
 ---
 
 ## Notes
@@ -298,3 +485,6 @@ konnectivity-agent-54c85967cb-mgfdg       1/1     Running   0          8d
 - AKS Invoke is ideal for zero-trust network architectures
 - Pod and service CIDRs should be planned before cluster creation
 - Use managed identity for workload authentication instead of service principals
+- Add-ons are automatically patched; extensions follow user-defined schedules
+- Preview features must be registered before use
+- Kube-proxy can be customized or disabled based on your CNI choice
