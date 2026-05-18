@@ -1,5 +1,19 @@
-# How to create a Microsoft Azure RedHat OpenShift cluster?
-The Microsoft Azure Red Hat OpenShift service enables you to deploy fully managed OpenShift clusters. Azure Red Hat OpenShift extends Kubernetes.
+# Azure Red Hat OpenShift (ARO) - Cluster Deployment Guide
+
+The Microsoft Azure Red Hat OpenShift (ARO) service enables you to deploy fully managed OpenShift clusters on Azure. Azure Red Hat OpenShift extends Kubernetes with enterprise features, lifecycle management, and integrated security controls.
+
+---
+
+## Overview
+
+ARO is a fully managed service that handles OpenShift control plane operations (API server, etcd, scheduling) while you manage worker nodes. The service includes:
+- **Automated updates and patches** for control plane components
+- **Integrated Azure services** (identity, networking, storage, monitoring)
+- **OVN-based networking** with Geneve overlay protocol
+- **Built-in observability** with Azure Monitor integration
+- **Enterprise support** and SLAs
+
+---
 
 ## Pre-Requisites
 - You should have an Azure Subscription.
