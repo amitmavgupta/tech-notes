@@ -6,7 +6,7 @@ Comprehensive guides for provisioning, managing, and operating Google Kubernetes
 
 ## Quick Navigation
 
-### 1. **GKE-Cluster-Provisioning.md**
+### 1. **[GKE-Cluster-Provisioning.md](GKE-Cluster-Provisioning.md)**
 Step-by-step guides for cluster creation with various networking scenarios:
 - **Basic cluster creation**: Standard GKE cluster deployment
 - **Dual-stack (IPv4 + IPv6)**: Deploy clusters with both IPv4 and IPv6 support
@@ -16,7 +16,7 @@ Step-by-step guides for cluster creation with various networking scenarios:
 - **Common configurations**: Production, development, and dual-stack deployment examples
 - **Cluster verification**: Post-deployment validation and credential configuration
 
-### 2. **GKE-Operations-Commands.md**
+### 2. **[GKE-Operations-Commands.md](GKE-Operations-Commands.md)**
 Essential gcloud CLI commands for cluster and infrastructure management:
 - **gcloud configuration**: Project management and configuration
 - **Cloud Shell operations**: SSH access, file transfers, interactive sessions
