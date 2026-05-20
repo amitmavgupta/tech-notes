@@ -22,6 +22,7 @@ Complete collection of published articles, videos, and technical content across 
 ### 🥜 Nutanix Developer Blog
 
 High-performance networking, Flow CNI, and eBPF-based solutions for Nutanix infrastructure:
+- [A Platform Engineer’s Guide to Federated Networking with Nutanix Flow CNI](https://www.nutanix.dev/2026/05/20/a-platform-engineers-guide-to-federated-networking-with-nutanix-flow-cni/)
 - [Mastering Egress Traffic in Flow CNI: A Guide to Egress IP](https://www.nutanix.dev/2026/04/20/mastering-egress-traffic-in-flow-cni-a-guide-to-egress-ip/)
 - [How Nutanix AHV Uses eBPF for VNIC IP Mapping](https://www.nutanix.com/tech-center/blog/how-nutanix-ahv-uses-ebpf-for-vnic-ip-mapping)
 - [Nutanix Flow: Smarter L4 Load Balancing](https://www.nutanix.com/tech-center/blog/nutanix-flow-smarter-l4-load-balancing)
