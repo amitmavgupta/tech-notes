@@ -1,6 +1,6 @@
 # OpenShift Local Setup
 
-This guide covers installing OpenShift Local (formerly CodeReady Containers).
+This guide covers installing [OpenShift Local] (https://openshift.guide/getting-started/openshift-local.html) (formerly CodeReady Containers).
 
 ---
 
@@ -9,6 +9,7 @@ This guide covers installing OpenShift Local (formerly CodeReady Containers).
 ### Prerequisites
 
 - macOS 13.x or later
+- 4 vCPU's and 16GB or RAM (32GB is recommended)
 - Sufficient disk space (at least 31 GiB)
 - Download the CRC macOS installer from Red Hat
 - Obtain a pull secret from https://console.redhat.com/openshift/create/local
