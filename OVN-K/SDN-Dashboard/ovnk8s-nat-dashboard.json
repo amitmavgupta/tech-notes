@@ -296,7 +296,7 @@
       "collapsed": false,
       "gridPos": { "h": 1, "w": 24, "x": 0, "y": 9 },
       "id": 201,
-      "title": "🔀 SNAT — EgressIP (ovnkube_master_* subsystem, v1.0.0)",
+      "title": "SNAT — EgressIP (ovnkube_master_* subsystem, v1.0.0)",
       "type": "row"
     },
 
@@ -428,7 +428,7 @@
       "collapsed": false,
       "gridPos": { "h": 1, "w": 24, "x": 0, "y": 18 },
       "id": 202,
-      "title": "↔️ DNAT — OVN Load Balancers / Services (ClusterIP · NodePort · LoadBalancer)",
+      "title": "DNAT — OVN Load Balancers / Services (ClusterIP · NodePort · LoadBalancer)",
       "type": "row"
     },
 
@@ -573,7 +573,7 @@
       "collapsed": false,
       "gridPos": { "h": 1, "w": 24, "x": 0, "y": 27 },
       "id": 203,
-      "title": "📊 SNAT + DNAT Combined — Network Programming Duration by Kind",
+      "title": "SNAT + DNAT Combined — Network Programming Duration by Kind",
       "type": "row"
     },
 
@@ -668,7 +668,7 @@
       "collapsed": false,
       "gridPos": { "h": 1, "w": 24, "x": 0, "y": 36 },
       "id": 204,
-      "title": "📡 OVS Data Plane — Gateway Interfaces",
+      "title": "OVS Data Plane — Gateway Interfaces",
       "type": "row"
     },
 
@@ -756,7 +756,7 @@
       "collapsed": false,
       "gridPos": { "h": 1, "w": 24, "x": 0, "y": 45 },
       "id": 205,
-      "title": "🧠 ovnkube-master Control Plane Health",
+      "title": "ovnkube-master Control Plane Health",
       "type": "row"
     },
 
