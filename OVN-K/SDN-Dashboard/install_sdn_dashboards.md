@@ -7,7 +7,6 @@ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n
   --set prometheusOperator.admissionWebhooks.enabled=false \
   --set prometheusOperator.admissionWebhooks.patch.enabled=false
 ```
-# helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring --set prometheusOperator.tls.enabled=false --set prometheusOperator.admissionWebhooks.enabled=false --set prometheusOperator.admissionWebhooks.patch.enabled=false
 
 ## Port Forwarding (optional)
 
@@ -34,9 +33,9 @@ helm install sdn-dashboard sdn-dashboard/
 
 Note: By default OVN-K has moved to IC mode. For Centralized mode, the support was available till release 1.0.0. This will provide you with three handy dashboards for 
 
-### OVN Host/ Controller
-### OVN K8s/ Cluster Manager
-### OVN K8s/ Node Agent
+- OVN Host/ Controller
+- OVN K8s/ Cluster Manager
+- OVN K8s/ Node Agent
 
 Reference: 
 [SDN-Dashboard](https://ovn-kubernetes.io/observability/sdn-dashboard/#sdn-dashboards)
