@@ -199,8 +199,6 @@ OVN-K/
 
 ## Related Documentation
 
-- **AWS**: Comprehensive guides for AWS EKS networking and operations
-- **Azure Kubernetes Service (AKS)**: Similar observability guides for Azure AKS
 - **OVN-Kubernetes Official**: https://ovn-kubernetes.io/observability/sdn-dashboard/
 - **Prometheus Operator**: https://prometheus-operator.dev/
 
@@ -213,4 +211,3 @@ OVN-K/
 - Grafana datasource must point to the Prometheus instance in the monitoring namespace
 - ServiceMonitor selectors must match the labels on OVN-K service ports (k8s-app: ovnkube-node, k8s-app: ovnkube-control-plane, etc.)
 - Reference dashboard images are static examples; actual visualizations depend on workload and cluster metrics
-- For multi-zone OVN-K deployments (IC mode), zone-controller metrics and dashboards provide zone-specific monitoring
