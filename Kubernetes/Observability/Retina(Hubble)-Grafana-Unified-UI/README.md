@@ -106,6 +106,7 @@ they're correct out of the box.
 ## Notes
 
 - There is a known issue with Safari and I will update in a near term fix. For now this works on Chrome.
+-    Safari's Intelligent Tracking Prevention (ITP) blocks third-party cookies by default; so after you log in, Grafana sets its session cookie, but Safari refuses to store/send it back on the next request inside the iframe, and Grafana bounces you to the login page again. Chrome is much more permissive about this (especially over http://localhost), so it "just works" there but it's really only masking the underlying problem.
 - This intentionally doesn't try to proxy or merge the two apps' HTTP
   traffic into one origin — that's the part that breaks in practice. Iframing
   two origins under one tabbed shell is the boring, reliable option.
