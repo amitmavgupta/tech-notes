@@ -8,6 +8,14 @@ It's one static file — `index.html` — with no build step and no backend. It
 works by embedding each tool in an `<iframe>` and pointing the iframe at
 whatever URL you tell it to, via the "⚙ endpoints" panel in the header.
 
+## Screenshots
+
+![Unified UI view for Retina (Hubble) and Grafana](screenshot-unified-ui.png)
+
+![Hubble UI accessed from the unified UI](screenshot-hubble-ui.png)
+
+![Grafana accessed from the unified UI](screenshot-grafana-ui.png)
+
 ## Quick start (local dev, matches the Retina docs)
 
 This assumes you've already installed Retina with the Hubble control plane
