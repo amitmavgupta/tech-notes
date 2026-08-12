@@ -86,8 +86,12 @@ grafana:
   grafana.ini:
     security:
       allow_embedding: true
-    # only needed if you're doing SSO/OAuth login and hitting cookie issues:
-    # cookie_samesite: disabled
+      cookie_samesite: none
+      cookie_secure: true   # required — browsers reject SameSite=None without Secure
+      # Only needed if you hit blank/broken iframes while using SSO/OAuth login —
+      # some browsers block third-party cookies inside iframes otherwise.
+      # Leave this out to start; add it only if you actually see the problem.
+      # cookie_samesite: disabled
 ```
 
 Hubble UI does not set `X-Frame-Options`, so it embeds without extra config.
