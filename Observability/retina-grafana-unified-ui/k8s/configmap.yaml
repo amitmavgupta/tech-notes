@@ -1,0 +1,386 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: retina-unified-ui-nginx
+  namespace: kube-system
+data:
+  nginx.conf: |
+    server {
+      listen 8080;
+      root /usr/share/nginx/html;
+      index index.html;
+      location / {
+        try_files $uri $uri/ /index.html;
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: retina-unified-ui-html
+  namespace: kube-system
+data:
+  # Same content as ../index.html, with DEFAULTS pre-set to the example
+  # hostnames used by ingress.yaml. Update both if you use different
+  # hostnames, or change them later from the running UI's "endpoints" panel.
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retina Observability — Unified UI</title>
+    <style>
+      :root{
+        --bg:#0b0e11;
+        --panel:#12161b;
+        --panel-2:#171c22;
+        --line:#232a32;
+        --text:#e7ecef;
+        --muted:#7c8894;
+        --accent:#33c9ff;
+        --accent-dim:#1c6f87;
+        --amber:#f2a93b;
+        --green:#4ad991;
+        --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+        --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      }
+      *{box-sizing:border-box;}
+      html,body{height:100%;margin:0;}
+      body{
+        background:var(--bg);
+        color:var(--text);
+        font-family:var(--sans);
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+      }
+
+      /* ---------- Header ---------- */
+      header{
+        display:flex;
+        align-items:center;
+        gap:24px;
+        padding:0 20px;
+        height:56px;
+        background:var(--panel);
+        border-bottom:1px solid var(--line);
+        flex:0 0 auto;
+      }
+      .brand{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        font-family:var(--mono);
+        font-size:14px;
+        letter-spacing:0.02em;
+        color:var(--text);
+        white-space:nowrap;
+      }
+      .brand .dot{
+        width:8px;height:8px;border-radius:50%;
+        background:var(--accent);
+        box-shadow:0 0 8px var(--accent);
+        animation:pulse 2.2s ease-in-out infinite;
+      }
+      @keyframes pulse{
+        0%,100%{opacity:1;transform:scale(1);}
+        50%{opacity:.45;transform:scale(.7);}
+      }
+      .brand small{color:var(--muted);font-weight:400;}
+
+      nav{display:flex;gap:4px;flex:1;}
+      .tab{
+        font-family:var(--mono);
+        font-size:13px;
+        padding:8px 16px;
+        color:var(--muted);
+        background:transparent;
+        border:1px solid transparent;
+        border-radius:6px;
+        cursor:pointer;
+        transition:all .15s ease;
+      }
+      .tab:hover{color:var(--text);background:var(--panel-2);}
+      .tab.active{
+        color:var(--bg);
+        background:var(--accent);
+        font-weight:600;
+      }
+      .tab .badge{
+        display:inline-block;
+        margin-left:6px;
+        width:6px;height:6px;
+        border-radius:50%;
+        background:var(--green);
+        vertical-align:middle;
+      }
+
+      .settings-btn{
+        background:transparent;
+        border:1px solid var(--line);
+        color:var(--muted);
+        font-family:var(--mono);
+        font-size:12px;
+        padding:7px 12px;
+        border-radius:6px;
+        cursor:pointer;
+      }
+      .settings-btn:hover{color:var(--text);border-color:var(--accent-dim);}
+
+      /* ---------- Settings panel ---------- */
+      #settings{
+        position:fixed;
+        top:56px;right:0;
+        width:340px;
+        background:var(--panel);
+        border-left:1px solid var(--line);
+        border-bottom:1px solid var(--line);
+        padding:18px;
+        display:none;
+        z-index:50;
+        font-size:13px;
+      }
+      #settings.open{display:block;}
+      #settings h4{margin:0 0 12px;font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+      #settings label{display:block;margin:12px 0 4px;color:var(--muted);font-size:12px;}
+      #settings input{
+        width:100%;
+        background:var(--bg);
+        border:1px solid var(--line);
+        color:var(--text);
+        padding:8px 10px;
+        border-radius:5px;
+        font-family:var(--mono);
+        font-size:12px;
+      }
+      #settings .save{
+        margin-top:16px;
+        width:100%;
+        background:var(--accent);
+        color:var(--bg);
+        border:none;
+        padding:9px;
+        border-radius:5px;
+        font-weight:600;
+        cursor:pointer;
+        font-size:12px;
+      }
+      #settings .hint{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.5;}
+
+      /* ---------- Panes ---------- */
+      main{flex:1;position:relative;min-height:0;}
+      .pane{
+        position:absolute;inset:0;
+        display:none;
+        flex-direction:column;
+      }
+      .pane.active{display:flex;}
+
+      .frame-bar{
+        flex:0 0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:6px 16px;
+        background:var(--panel-2);
+        border-bottom:1px solid var(--line);
+        font-family:var(--mono);
+        font-size:11px;
+        color:var(--muted);
+      }
+      .frame-bar a{color:var(--accent);text-decoration:none;}
+      .frame-bar a:hover{text-decoration:underline;}
+
+      iframe{
+        flex:1;
+        width:100%;
+        border:none;
+        background:#fff;
+      }
+
+      /* ---------- Overview ---------- */
+      .overview{
+        flex:1;
+        overflow:auto;
+        padding:48px 40px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+      .overview-inner{max-width:760px;width:100%;}
+      .overview h1{
+        font-family:var(--mono);
+        font-size:26px;
+        margin:0 0 6px;
+        font-weight:600;
+      }
+      .overview .sub{color:var(--muted);margin:0 0 32px;font-size:14px;line-height:1.6;}
+      .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+      .card{
+        background:var(--panel);
+        border:1px solid var(--line);
+        border-radius:10px;
+        padding:20px;
+        cursor:pointer;
+        transition:border-color .15s ease, transform .15s ease;
+      }
+      .card:hover{border-color:var(--accent-dim);transform:translateY(-2px);}
+      .card h3{
+        font-family:var(--mono);
+        font-size:15px;
+        margin:0 0 8px;
+        display:flex;align-items:center;gap:8px;
+      }
+      .card p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.6;}
+      .card .go{
+        display:inline-block;margin-top:12px;
+        font-family:var(--mono);font-size:11px;
+        color:var(--accent);
+      }
+      .swatch{width:8px;height:8px;border-radius:2px;}
+      .swatch.hubble{background:var(--accent);}
+      .swatch.grafana{background:var(--amber);}
+
+      .flow-line{
+        margin-top:36px;
+        height:2px;width:100%;
+        background:linear-gradient(90deg,transparent, var(--line) 20%, var(--line) 80%, transparent);
+        position:relative;
+        overflow:visible;
+      }
+      .flow-line::after{
+        content:'';
+        position:absolute;top:-3px;left:0;
+        width:8px;height:8px;border-radius:50%;
+        background:var(--accent);
+        box-shadow:0 0 10px var(--accent);
+        animation:travel 3.5s linear infinite;
+      }
+      @keyframes travel{
+        0%{left:0%;}
+        100%{left:100%;}
+      }
+    </style>
+    </head>
+    <body>
+
+    <header>
+      <div class="brand"><span class="dot"></span>retina<small>&nbsp;/ unified-ui</small></div>
+      <nav>
+        <button class="tab active" data-pane="overview">overview</button>
+        <button class="tab" data-pane="hubble">hubble ui<span class="badge"></span></button>
+        <button class="tab" data-pane="grafana">grafana<span class="badge"></span></button>
+      </nav>
+      <button class="settings-btn" id="settingsToggle">⚙ endpoints</button>
+    </header>
+
+    <div id="settings">
+      <h4>Endpoint configuration</h4>
+      <label for="hubbleUrl">Hubble UI URL</label>
+      <input id="hubbleUrl" type="text" placeholder="http://localhost:8081" />
+      <label for="grafanaUrl">Grafana URL</label>
+      <input id="grafanaUrl" type="text" placeholder="http://localhost:8080" />
+      <button class="save" id="saveSettings">Save &amp; reload</button>
+      <div class="hint">
+        Defaults match the standard <code>kubectl port-forward</code> commands from the
+        Retina docs. If you're running behind an Ingress instead, point these at your
+        real hostnames (e.g. https://hubble.internal.example.com).
+      </div>
+    </div>
+
+    <main>
+      <section class="pane active" id="pane-overview">
+        <div class="overview">
+          <div class="overview-inner">
+            <h1>Unified network observability</h1>
+            <p class="sub">One surface for the two views Retina drives: live flow topology from
+              Hubble UI, and the metric trends from Grafana. Switch tabs above, or jump in below.</p>
+            <div class="cards">
+              <div class="card" data-goto="hubble">
+                <h3><span class="swatch hubble"></span>Hubble UI</h3>
+                <p>Service map, live flow table, and verdicts for traffic captured by
+                  Retina's eBPF data plane — filter by namespace, label, or verdict.</p>
+                <span class="go">open flows →</span>
+              </div>
+              <div class="card" data-goto="grafana">
+                <h3><span class="swatch grafana"></span>Grafana</h3>
+                <p>Cluster, DNS, and pod-traffic dashboards built from Retina metrics in
+                  Prometheus — drop-latency, packet counts, API server latency, and more.</p>
+                <span class="go">open dashboards →</span>
+              </div>
+            </div>
+            <div class="flow-line"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pane" id="pane-hubble">
+        <div class="frame-bar">
+          <span>svc/hubble-ui</span>
+          <a id="hubbleOpen" href="#" target="_blank" rel="noopener">open in new tab ↗</a>
+        </div>
+        <iframe id="hubbleFrame" title="Hubble UI" referrerpolicy="no-referrer"></iframe>
+      </section>
+
+      <section class="pane" id="pane-grafana">
+        <div class="frame-bar">
+          <span>svc/prometheus-grafana</span>
+          <a id="grafanaOpen" href="#" target="_blank" rel="noopener">open in new tab ↗</a>
+        </div>
+        <iframe id="grafanaFrame" title="Grafana" referrerpolicy="no-referrer"></iframe>
+      </section>
+    </main>
+
+    <script>
+      const DEFAULTS = {
+        hubble: 'https://hubble.example.com',
+        grafana: 'https://grafana.example.com',
+      };
+
+      function loadConfig(){
+        return {
+          hubble: localStorage.getItem('retina.hubbleUrl') || DEFAULTS.hubble,
+          grafana: localStorage.getItem('retina.grafanaUrl') || DEFAULTS.grafana,
+        };
+      }
+
+      function applyConfig(){
+        const cfg = loadConfig();
+        document.getElementById('hubbleUrl').value = cfg.hubble;
+        document.getElementById('grafanaUrl').value = cfg.grafana;
+        document.getElementById('hubbleFrame').src = cfg.hubble;
+        document.getElementById('grafanaFrame').src = cfg.grafana;
+        document.getElementById('hubbleOpen').href = cfg.hubble;
+        document.getElementById('grafanaOpen').href = cfg.grafana;
+      }
+
+      document.getElementById('settingsToggle').addEventListener('click', () => {
+        document.getElementById('settings').classList.toggle('open');
+      });
+
+      document.getElementById('saveSettings').addEventListener('click', () => {
+        localStorage.setItem('retina.hubbleUrl', document.getElementById('hubbleUrl').value.trim() || DEFAULTS.hubble);
+        localStorage.setItem('retina.grafanaUrl', document.getElementById('grafanaUrl').value.trim() || DEFAULTS.grafana);
+        applyConfig();
+        document.getElementById('settings').classList.remove('open');
+      });
+
+      function switchTab(name){
+        document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.pane === name));
+        document.querySelectorAll('.pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + name));
+      }
+
+      document.querySelectorAll('.tab').forEach(t => {
+        t.addEventListener('click', () => switchTab(t.dataset.pane));
+      });
+      document.querySelectorAll('[data-goto]').forEach(c => {
+        c.addEventListener('click', () => switchTab(c.dataset.goto));
+      });
+
+      applyConfig();
+    </script>
+
+    </body>
+    </html>
+
