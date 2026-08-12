@@ -1,5 +1,12 @@
 # Retina (Hubble) & Grafana Unified UI
 
+## Disclaimer
+
+This implementation is intentionally an iFrame-based proof of concept. It is not designed, recommended, or supported for production environments.
+The purpose of the project is to explore the idea of a unified observability experience and evaluate how reducing context switching can improve usability.
+
+## Introduction
+
 A single page that tabs between **Hubble UI** (live flow topology) and **Grafana**
 (Retina's Prometheus dashboards) so you don't have to juggle two browser tabs
 while working with [Retina](https://retina.sh/).
