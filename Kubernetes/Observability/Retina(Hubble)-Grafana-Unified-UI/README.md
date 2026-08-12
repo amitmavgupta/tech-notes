@@ -1,4 +1,4 @@
-# Retina Unified UI
+# Retina (Hubble) & Grafana Unified UI
 
 A single page that tabs between **Hubble UI** (live flow topology) and **Grafana**
 (Retina's Prometheus dashboards) so you don't have to juggle two browser tabs
