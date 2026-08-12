@@ -105,6 +105,7 @@ they're correct out of the box.
 
 ## Notes
 
+- There is a known issue with Safari and I will update in a near term fix. For now this works on Chrome.
 - This intentionally doesn't try to proxy or merge the two apps' HTTP
   traffic into one origin — that's the part that breaks in practice. Iframing
   two origins under one tabbed shell is the boring, reliable option.
