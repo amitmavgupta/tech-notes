@@ -81,9 +81,3 @@ Variables allow users to filter and focus the dashboard quickly.
 - Blank panels after import: verify datasource mapping and that Prometheus/Loki contain the expected metrics/logs.
 - Missing variables: check that the templated variable queries return results in Explore, and that required label names are present in the Prometheus metric sets.
 - Provisioning not loading: confirm provisioning YAML is placed in Grafana's provisioning folder and that file paths referenced point to the JSON file location inside the Grafana container.
-
-## Tips for maintainers
-
-- Keep the JSON under version control in this repo so dashboard changes are auditable and deployable by CI/CD.
-- Split very large dashboards into smaller focused dashboards if load or complexity becomes an issue.
-- Document any datasource name expectations in your cluster's README or Grafana provisioning docs.
