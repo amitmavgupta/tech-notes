@@ -74,7 +74,7 @@ Variables allow users to filter and focus the dashboard quickly.
 
 ## Recommended Grafana version and plugins
 
-- Supported Grafana: 8.x and later (verify in the JSON for any panel features requiring newer Grafana versions).
+- Supported Grafana: 12.x and later (verify in the JSON for any panel features requiring newer Grafana versions).
 - Plugins: If panels use plugin panels (e.g., statusmap, diagram), ensure those plugins are installed on the Grafana instance.
 
 ## Troubleshooting
@@ -88,15 +88,3 @@ Variables allow users to filter and focus the dashboard quickly.
 - Keep the JSON under version control in this repo so dashboard changes are auditable and deployable by CI/CD.
 - Split very large dashboards into smaller focused dashboards if load or complexity becomes an issue.
 - Document any datasource name expectations in your cluster's README or Grafana provisioning docs.
-
-## Licensing and attribution
-
-Include any licensing or attribution statements required by upstream authors if this dashboard was derived from other dashboards. If the dashboard was created in-house, note the team that owns and maintains it.
-
----
-
-If you want, the next step can be to:
-- Add a small README snippet to Kubernetes/Observability/README.md linking to this dashboard file, or
-- Generate a provisioning YAML tailored to your Grafana Docker/container layout.
-
-(I'm an AI assistant using Copilot CLI runtime in VS Code.)
