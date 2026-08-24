@@ -3,7 +3,6 @@
 This document describes the tetragon-dashboard.json Grafana dashboard file and how to use, import, and customize it.
 
 - Dashboard JSON file: [tetragon-dashboard.json](/Users/amit.gupta1/Downloads/tech-notes/tech-notes.worktrees/tetragon-dashboard-md-docs/Kubernetes/Observability/Tetragon-Grafana-Dashboard/tetragon-dashboard.json)
-- Location: Kubernetes/Observability/Tetragon-Grafana-Dashboard/
 
 ## Purpose
 
