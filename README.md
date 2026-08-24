@@ -189,24 +189,6 @@ rg "terraform" --type md                   # Find IaC examples
 | Understanding concepts | `Cheat-Sheets/` → Quick references, `Bookmarks/` → External resources |
 | Exploring published work | `My-Blogs/` → Links to articles and videos |
 
-### Search Strategy
-
-Use ripgrep or grep to jump directly to content:
-
-```bash
-# Find RBAC examples
-rg "ServiceAccount" --type md
-
-# Locate networking patterns
-rg "LoadBalancer" --type md
-
-# Find IaC examples
-rg "terraform" --type md
-
-# Search across multiple keywords
-rg "pod.*network|network.*pod" --type md
-```
-
 ### Adapting Content for Production
 
 1. **Review the full guide** before copying manifests
