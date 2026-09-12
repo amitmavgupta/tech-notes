@@ -83,13 +83,13 @@ This is a deliberate choice, not a shortcut: Hubble UI's static assets are
 built with absolute root paths (`/static/js/...`), and it has no built-in
 "serve under a sub-path" option today, so mounting it at `/hubble/` behind a
 reverse proxy will 404 on its own JS/CSS unless you add fragile HTML
-rewriting rules. Host-based routing avoids that entirely — each app is
+rewriting rules. Host-based routing avoids that entirely. Each app is
 served from its own root, exactly the way it expects, and the landing page
 simply iframes each hostname.
 
 Grafana *does* support sub-path serving natively (`GF_SERVER_SERVE_FROM_SUB_PATH`),
 so if you'd rather have everything under one hostname, you can do that for
-Grafana alone — see the comment in `k8s/ingress.yaml`.
+Grafana alone. See the comment in `k8s/ingress.yaml`.
 
 ### Grafana: allow it to be iframed
 
