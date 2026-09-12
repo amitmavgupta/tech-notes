@@ -21,7 +21,7 @@ whatever URL you tell it to, via the "⚙ endpoints" panel in the header.
 
 ![Hubble UI accessed from the unified UI](screenshot-hubble-ui.png)
 
-![Grafana accessed from the unified UI](screenshot-grafana-ui.png)
+![Grafana accessed from the unified UI](grafana-ui.png)
 
 ## Quick start (local dev, matches the Retina docs)
 
