@@ -17,9 +17,9 @@ whatever URL you tell it to, via the "⚙ endpoints" panel in the header.
 
 ## Screenshots
 
-![Unified UI view for Retina (Hubble) and Grafana](screenshot-unified-ui.png)
+![Unified UI view for Retina (Hubble) and Grafana](unified-ui.png)
 
-![Hubble UI accessed from the unified UI](screenshot-hubble-ui.png)
+![Hubble UI accessed from the unified UI](hubble-ui.png)
 
 ![Grafana accessed from the unified UI](grafana-ui.png)
 
