@@ -26,7 +26,7 @@ This repository documents over 50 published articles and videos covering:
 | --- | --- | --- |
 | **Medium** | 17 | Personal deep-dives on Cilium, EKS, AKS, GKE, and networking |
 | **Isovalent** | 27 | Cilium enterprise deployments, GitOps, cluster mesh, observability |
-| **Nutanix** | 5 | Flow CNI, egress IP management, L4 load balancing |
+| **Nutanix** | 7 | Flow CNI, egress IP management, L4 load balancing |
 | **Avi Networks** | 24 | Load balancing, cloud deployment, networking configurations |
 | **Microsoft** | 2 | Azure and cloud platform guidance |
 | **Events** | 3 | Conference presentations (eBPF Day, OpenStack Summit) |
