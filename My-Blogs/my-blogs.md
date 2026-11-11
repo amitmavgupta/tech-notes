@@ -19,7 +19,7 @@ Complete collection of published articles, videos, and technical content across 
 
 ## 📚 Published Articles by Platform
 
-### 🥜 Nutanix Developer Blog
+### 🥜 Nutanix Blog
 
 High-performance networking, Flow CNI, and eBPF-based solutions for Nutanix infrastructure:
 - [How Nutanix is using Retina for cloud-native network observability](https://retina.sh/blog/how-nutanix-is-using-retina/)
